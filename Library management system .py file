@@ -1,0 +1,52 @@
+Books = []
+Issued_books = []
+
+def add_book():
+    book_id = input("Enter book ID -> ").lower()
+    book_title = input("Enter book TItle -> ").lower()
+    book_author = input("Enter book Author Name -> ").lower()
+    quantity = int(input("Enter book Quantity -> "))
+
+    # quantity check - positive honi chahiye
+    if quantity <= 0:
+        print("\nBook quantity must be a positive whole number....!")
+        return
+
+    # ID unique check
+    for i in Books:
+        if book_id in i:
+            print("\nThis book already exist we can not add it........!")
+            return
+
+    Books.append([book_id,book_title,book_author,quantity])
+    print("\nBook added successfully............!")
+
+def View_all_books():
+    varify = False
+    for index,i in enumerate(Books,start=1):
+        print("\n")
+        print("Book -> ",index)
+        for j in i:
+            varify=True
+            print("\t-> ",j)
+    if not varify:
+        print("There is no any Books......!")
+
+    
+def Search_Book():
+    book_id = input("\nEnter book ID/Title/ -> ").lower()
+    varify = False
+    for i in Books:
+        if book_id in i:
+            varify=True
+            for value in i:
+                print(f" -> {value}")
+
+    if not varify:    
+        print("\nSorry i have not this book......!")
+
+def Issue_book():
+    book_id = input("\nPlease Enter book ID -> ").lower()
+    quantity = int(input("\nPlease Enter quantity -> "))
+    student = input("Enter Student Name -> ").lower()
+    varify = False
